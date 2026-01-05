@@ -1,8 +1,6 @@
 package org.example.storeapplication;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -10,17 +8,24 @@ import java.util.List;
 @RequestMapping("api/products")
 public class ProductController {
 
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
+
     @GetMapping
     public List<Product> getProducts() {
-        return List.of(
-                new Product(
-                        1,
-                        "Samsung",
-                        "Phone",
-                        234.34,
-                        2,
-                        11
-                )
-        );
+        return productService.getProducts();
+    }
+
+    @GetMapping("{id}")
+    public Product getProductById(@PathVariable Integer id) {
+        return productService.getProductById(id);
+    }
+
+    @PostMapping
+    public void insertProduct(@RequestBody Product product) {
+        productService.insertProduct(product);
     }
 }

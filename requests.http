@@ -3,3 +3,18 @@ GET http://localhost:8080
 
 ###
 GET http://localhost:8080/api/products
+
+###
+GET http://localhost:8080/api/products/2
+
+###
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "Samsung",
+  "description": "Phone Des",
+  "price": 123.34,
+  "quantity": 2,
+  "categoryId": 11
+}
