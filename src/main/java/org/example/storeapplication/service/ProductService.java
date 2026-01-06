@@ -1,5 +1,7 @@
-package org.example.storeapplication;
+package org.example.storeapplication.service;
 
+import org.example.storeapplication.entity.Product;
+import org.example.storeapplication.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.example.storeapplication;
+package org.example.storeapplication.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

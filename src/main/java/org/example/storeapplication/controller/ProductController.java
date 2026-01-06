@@ -1,5 +1,7 @@
-package org.example.storeapplication;
+package org.example.storeapplication.controller;
 
+import org.example.storeapplication.entity.Product;
+import org.example.storeapplication.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
