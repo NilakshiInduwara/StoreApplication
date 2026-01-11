@@ -1,5 +1,6 @@
 package org.example.storeapplication.controller;
 
+import org.example.storeapplication.dto.ProductDTO;
 import org.example.storeapplication.entity.Product;
 import org.example.storeapplication.service.ProductService;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public void insertProduct(@RequestBody Product product) {
+    public void insertProduct(@RequestBody ProductDTO product) {
         productService.insertProduct(product);
     }
 }

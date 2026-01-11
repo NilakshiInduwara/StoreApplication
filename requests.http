@@ -16,5 +16,13 @@ Content-Type: application/json
   "description": "Phone Des",
   "price": 123.34,
   "quantity": 2,
-  "categoryId": 11
+  "categoryId": 1
+}
+
+###
+POST http://localhost:8080/api/categories
+Content-Type: application/json
+
+{
+"name": "Electronics"
 }

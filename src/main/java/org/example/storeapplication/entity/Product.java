@@ -1,9 +1,6 @@
 package org.example.storeapplication.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
@@ -16,19 +13,24 @@ public class Product  {
     private String description;
     private Double price;
     private Integer quantity;
-    private Integer categoryId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
 
     public Product() {
     }
 
-    public Product(Integer id, String name, String description, Double price, Integer quantity, Integer categoryId) {
+    public Product(Integer id, String name, String description, Double price, Integer quantity, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.quantity = quantity;
-        this.categoryId = categoryId;
+        this.category = category;
     }
+
+    // getters & setters
 
     public Integer getId() {
         return id;
@@ -70,23 +72,25 @@ public class Product  {
         this.quantity = quantity;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(Category category) {
+        this.category = category;
     }
+
+    // equals & hashCode
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(description, product.description) && Objects.equals(price, product.price) && Objects.equals(quantity, product.quantity) && Objects.equals(categoryId, product.categoryId);
+        return Objects.equals(id, product.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, price, quantity, categoryId);
+        return Objects.hash(id);
     }
 }
